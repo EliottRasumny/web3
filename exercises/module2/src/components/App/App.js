@@ -11,9 +11,9 @@ const App = () => {
   return (
     <div>
       <Display counter={counter} />
-      <Button onClick={changeCount} text="plus" data-delta={1} />
-      <Button onClick={changeCount} text="zero" data-delta={-counter} />
-      <Button onClick={changeCount} text="minus" data-delta={-1} />
+      <Button changeCount={changeCount} text="plus" delta={1} />
+      <Button changeCount={changeCount} text="zero" delta={-counter} />
+      <Button changeCount={changeCount} text="minus" delta={-1} />
     </div>
   );
 };

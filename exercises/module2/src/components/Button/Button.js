@@ -1,5 +1,5 @@
-const Button = ({ onClick, text, delta }) => {
-  const handleClick = (e) => onClick(parseInt(e.target.dataset.delta));
+const Button = ({ changeCount, text, delta }) => {
+  const handleClick = (e) => changeCount(parseInt(e.target.dataset.delta));
 
   return (
     <button onClick={handleClick} data-delta={delta}>
