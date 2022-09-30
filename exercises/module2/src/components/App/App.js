@@ -6,16 +6,14 @@ import Display from "components/Display/Display";
 const App = () => {
   const [counter, setCounter] = useState(0);
 
-  const increaseByOne = () => setCounter(counter + 1);
-  const decreaseByOne = () => setCounter(counter - 1);
-  const setToZero = () => setCounter(0);
+  const changeCount = (delta) => setCounter(counter + delta);
 
   return (
     <div>
       <Display counter={counter} />
-      <Button onClick={increaseByOne} text="plus" />
-      <Button onClick={setToZero} text="zero" />
-      <Button onClick={decreaseByOne} text="minus" />
+      <Button onClick={changeCount} text="plus" data-delta={1} />
+      <Button onClick={changeCount} text="zero" data-delta={-counter} />
+      <Button onClick={changeCount} text="minus" data-delta={-1} />
     </div>
   );
 };
