@@ -1,13 +1,22 @@
+import personService from "services/persons";
 import Persons from "components/Persons/Persones";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: "Arto Hellas", number: "1234 56 78 90" },
-  ]);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
+
+  const loadDb = () => {
+    personService.getAll().then((personsReturned) => {
+      setPersons(personsReturned);
+    });
+  };
+
+  useEffect(() => {
+    loadDb();
+  }, []);
 
   const handleNameChange = (event) => {
     setNewName(event.target.value);
@@ -21,9 +30,12 @@ const App = () => {
     if (persons.map((p) => p.name).includes(newName)) {
       alert(`${newName} is already in the phonebook`);
     } else {
-      setPersons(persons.concat({ name: newName, number: newNumber }));
-      setNewName("");
-      setNewNumber("");
+      const newPerson = { name: newName, number: newNumber };
+      personService.create(newPerson).then((personReturned) => {
+        setPersons(persons.concat(personReturned));
+        setNewName("");
+        setNewNumber("");
+      });
     }
   };
 
