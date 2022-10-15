@@ -1,5 +1,5 @@
 import personService from "services/persons";
-import Persons from "components/Persons/Persones";
+import Persons from "components/Persons/Persons";
 
 import { useState, useEffect } from "react";
 
@@ -31,12 +31,19 @@ const App = () => {
       alert(`${newName} is already in the phonebook`);
     } else {
       const newPerson = { name: newName, number: newNumber };
-      personService.create(newPerson).then((personReturned) => {
+      personService.createOne(newPerson).then((personReturned) => {
         setPersons(persons.concat(personReturned));
         setNewName("");
         setNewNumber("");
       });
     }
+  };
+
+  const deletePerson = (id) => {
+    personService.deleteOne(id).then((response) => {
+      const filtered = persons.filter((p) => p.id != id); //ça fonctionne pas si on utilise !==
+      setPersons(filtered);
+    });
   };
 
   return (
@@ -54,7 +61,7 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      <Persons persons={persons} />
+      <Persons persons={persons} deletePerson={deletePerson} />
     </div>
   );
 };

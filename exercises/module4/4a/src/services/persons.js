@@ -6,15 +6,21 @@ const getAll = () => {
   return request.then((response) => response.data);
 };
 
-const create = (newObject) => {
+const createOne = (newObject) => {
   const request = axios.post(baseUrl, newObject);
   return request.then((response) => response.data);
 };
 
-const update = (id, newObject) => {
+//Je n'utilise pas encore updateOne
+const updateOne = (id, newObject) => {
   const request = axios.put(`${baseUrl}/${id}`, newObject);
   return request.then((response) => response.data);
 };
 
-const personServices = { getAll, create, update };
+const deleteOne = (id) => {
+  const request = axios.delete(`${baseUrl}/${id}`);
+  return request.then((response) => response); //On ne return pas .data car c'est vide !!!
+};
+
+const personServices = { getAll, createOne, updateOne, deleteOne };
 export default personServices;
