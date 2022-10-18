@@ -7,3 +7,15 @@ npm install json-server --save-dev
             "server": "json-server -p3001 --watch db.json"  
         }
     comme ça on peut faire npm run server
+
+
+
+
+
+Pour avoir des chemains absolus : creer jsconfig.json a la racine
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src"]
+}
