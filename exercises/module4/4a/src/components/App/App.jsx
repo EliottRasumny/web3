@@ -41,7 +41,7 @@ const App = () => {
 
   const deletePerson = (id) => {
     personService.deleteOne(id).then((response) => {
-      const filtered = persons.filter((p) => p.id != id); //ça fonctionne pas si on utilise !==
+      const filtered = persons.filter((p) => p.id !== id);
       setPersons(filtered);
     });
   };
