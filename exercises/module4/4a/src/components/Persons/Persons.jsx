@@ -1,11 +1,11 @@
 const Persons = ({ persons, deletePerson }) => {
-  const handleDeletion = (event) => {
+  const handleDeletion = (event, id) => {
     event.preventDefault();
-    deletePerson(event.target.getAttribute("idperson"));
+    deletePerson(id);
   };
 
   return persons.map((p) => (
-    <form key={p.id} onSubmit={handleDeletion} idperson={p.id}>
+    <form key={p.id} onSubmit={(e) => handleDeletion(e, p.id)}>
       {p.name} {p.number} <button type="submit">delete</button>
     </form>
   ));
