@@ -19,3 +19,45 @@ Pour avoir des chemains absolus : creer jsconfig.json a la racine
   },
   "include": ["src"]
 }
+
+
+--------------------------------------------------------------------------
+BACKEND
+
+npm install express
+{
+  // ...
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
+npm update
+------------> si c'est clone : faire que ça au lieu de ce qu'il y a au dessus : npm install
+
+npm install --save-dev nodemon
+{
+  //...
+  "dependencies": {
+    "express": "^4.17.2",
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
+{
+  // ..
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  // ..
+}
+------> comme ça on peut faire : npm run dev
+
+
+?????----------------------------------------------------------------------
+MONGO DB
+npm init
+npm install mongoose
+
+
