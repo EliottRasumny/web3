@@ -55,9 +55,9 @@ npm install --save-dev nodemon
 ------> comme ça on peut faire : npm run dev
 
 
-?????----------------------------------------------------------------------
+----------------------------------------------------------------------
 MONGO DB
 npm init
 npm install mongoose
-
+npm install dotenv -----> pour les variables d'environements
 
