@@ -100,13 +100,7 @@ app.post("/api/persons", (request, response) => {
     });
 
   */
-  // est ce qu'on peut utiliser un objet Person ? TODOTODOTODOTODOTODOTODO
   person.save().then((personSaved) => response.json(personSaved));
-  /*
-  Person.updateOne({ name: body.name }, { number: body.number }).then(
-    (personSaved) => response.json(personSaved)
-  );
-  */
 });
 
 /////////////////////////////////////Errors///////////////////////////////////////////

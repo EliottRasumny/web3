@@ -61,3 +61,5 @@ npm init
 npm install mongoose
 npm install dotenv -----> pour les variables d'environements
 
+----------------------------------------------------------------------
+npm install react-router-dom --------> pour utiliser le router
