@@ -5,6 +5,8 @@ import {
   Route,
   Link,
   useParams,
+  useNavigate,
+  useMatch,
 } from "react-router-dom";
 
 const Menu = () => {
@@ -72,19 +74,22 @@ const Footer = () => (
   </div>
 );
 
-const CreateNew = (props) => {
+const CreateNew = ({ addNew, setTimedNotification }) => {
   const [content, setContent] = useState("");
   const [author, setAuthor] = useState("");
   const [info, setInfo] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addNew({
+    addNew({
       content,
       author,
       info,
       votes: 0,
     });
+    setTimedNotification(content);
+    navigate("/");
   };
 
   return (
@@ -125,9 +130,7 @@ const anecdoteById = (id, anecdotes) => anecdotes.find((a) => a.id === id);
 
 const Anecdote = ({ anecdotes }) => {
   const id = Number(useParams().id);
-  console.log("YYYYYYYYYYYYYYYYYYYYYYYY", id);
   const anecdote = anecdoteById(id, anecdotes);
-  console.log("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRr", anecdote);
 
   return (
     <div>
@@ -161,6 +164,10 @@ const App = () => {
   ]);
 
   const [notification, setNotification] = useState("");
+  const setTimedNotification = (anecdoteName) => {
+    setNotification('A new anecdote "' + anecdoteName + '" was created !');
+    setTimeout(() => setNotification(""), 5000);
+  };
 
   const addNew = (anecdote) => {
     anecdote.id = Math.round(Math.random() * 10000);
@@ -183,10 +190,19 @@ const App = () => {
       <Router>
         <h1>Software anecdotes</h1>
         <Menu />
+        <p>{notification}</p>
         <Routes>
           <Route path="/" element={<AnecdoteList anecdotes={anecdotes} />} />
           <Route path="/about" element={<About />} />
-          <Route path="/create" element={<CreateNew addNew={addNew} />} />
+          <Route
+            path="/create"
+            element={
+              <CreateNew
+                addNew={addNew}
+                setTimedNotification={setTimedNotification}
+              />
+            }
+          />
           <Route
             path="/anecdotes/:id"
             element={<Anecdote anecdotes={anecdotes} />}
