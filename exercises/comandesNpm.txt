@@ -63,3 +63,6 @@ npm install dotenv -----> pour les variables d'environements
 
 ----------------------------------------------------------------------
 npm install react-router-dom --------> pour utiliser le router
+
+----------------------------------------------------------------------
+npm add antd -----> pour installer Ant Design
