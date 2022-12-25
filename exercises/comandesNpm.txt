@@ -70,4 +70,5 @@ npm install react-router-dom --------> pour utiliser le router
 npm add antd -----> pour installer Ant Design
 
 ----------------------------------------------------------------------
-npm install apollo-server graphql
+npm install apollo-server graphql --------> Pour le serveur (npm install apollo-server@3.10.1 graphql) -----> si on veut une version moins récente et être sûr que tout fonctionne 
+npm install @apollo/client graphql --------> Pour le client
